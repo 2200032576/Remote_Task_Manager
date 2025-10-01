@@ -1,0 +1,23 @@
+micronaut:
+  application:
+    name: remote-task-manager
+
+datasources:
+  default:
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:taskdb}
+    username: ${DB_USER:user}
+    password: ${DB_PASS:password}
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: validate
+        show_sql: true
+
+liquibase:
+  datasources:
+    default:
+      change-log: classpath:db/changelog/db.changelog-master.xml
